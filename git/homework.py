@@ -16,10 +16,8 @@ def is_two_object_has_same_value(first, second):
     If @first and @second has same value should return True
     In another case should return False
     """
-    if first == second:
-        return True
-    else:
-        return False
+
+    return first == second
 
 
 def is_two_objects_has_same_type(first: Any, second: Any) -> bool:
@@ -92,8 +90,8 @@ def multiple_ints_with_conversion(first_value: Any, second_value: Any) -> int:
     """
     try:
         return int(first_value) * int(second_value)
-    except(TypeError):
-        print("Not valid input data")
+    except (ValueError, TypeError):
+        raise ValueError('Not valid input data')
 
 
 def is_word_in_text(word: str, text: str) -> bool:
@@ -173,9 +171,7 @@ def simple_sort(data: List[int]) -> List[list]:
     for y in range(i):
         for j in range(y, i):
             if data[y] > data[j]:
-                temp = data[j]
-                data[j] = data[y]
-                data[y] = temp
+                data[j], data[y] = data[y], data[j]
             j += 1
 
     return data
